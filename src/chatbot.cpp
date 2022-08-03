@@ -8,16 +8,15 @@
 #include "graphedge.h"
 #include "chatbot.h"
 
-// constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
+    std::cout << "ChatBot Default Constructor" << std::endl;
     // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
     _rootNode = nullptr;
 }
 
-// constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
@@ -45,7 +44,7 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
-/// move constructor
+// move constructor
 ChatBot::ChatBot(ChatBot &&source)
 {
     _image = source._image;
@@ -54,20 +53,22 @@ ChatBot::ChatBot(ChatBot &&source)
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
-    std::cerr << "ChatBot move constructor\n";
+    std::cout << "ChatBot Move Constructor" << std::endl;
 }
-/// move assignment
+// move assignment operator
 ChatBot & ChatBot::operator=(ChatBot &&source)
 {
     _image = source._image;
-    _image = NULL;
+    source._image = NULL;
 
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
-    std::cerr << "ChatBot move assignment\n";
+    std::cerr << "ChatBot Move Assignment" << std::endl;
 
     return *this;
 }
@@ -113,7 +114,7 @@ void ChatBot::SetCurrentNode(GraphNode *node)
 {
     // update pointer to current node
     _currentNode = node;
-
+  
     // select a random node answer (if several answers should exist)
     std::vector<std::string> answers = _currentNode->GetAnswers();
     std::mt19937 generator(int(std::time(0)));
