@@ -12,7 +12,7 @@ ChatBot::ChatBot()
 {
     std::cout << "ChatBot Default Constructor" << std::endl;
     // invalidate data handles
-    _image = nullptr;
+    _image = NULL;
     _chatLogic = nullptr;
     _rootNode = nullptr;
 }
@@ -37,6 +37,7 @@ ChatBot::~ChatBot()
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
+        _image = NULL;
     }
 }
 
@@ -78,7 +79,7 @@ ChatBot & ChatBot::operator=(ChatBot &&source)
         source._rootNode = nullptr;
         source._chatLogic = nullptr;
     }
-    std::cout << "ChatBot Move Assignment" << std::endl;
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
 
     return *this;
 }
