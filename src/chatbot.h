@@ -35,9 +35,9 @@ public:
     ChatBot & operator=(ChatBot &&);
 
 
-    // delete copy constructor assignment and assignment operator
-    ChatBot(const ChatBot &) = delete;
-    ChatBot & operator=(const ChatBot &) = delete;
+    // copy constructor assignment and assignment operator
+    ChatBot(const ChatBot &);
+    ChatBot & operator=(const ChatBot &);
 
     ////
     //// EOF STUDENT CODE
