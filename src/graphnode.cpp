@@ -8,14 +8,14 @@ GraphNode::GraphNode(int id)
     _id = id;
 }
 
-GraphNode::~GraphNode()
-{
-    //// STUDENT CODE
-    ////
+/// STUDENT CODE
+///
 
-    ////
-    //// EOF STUDENT CODE
-}
+// No destructor needed anymore, so I've removed it completely.
+
+///
+/// EOF STUDENT CODE
+
 
 void GraphNode::AddToken(std::string token)
 {
